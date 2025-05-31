@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: percentage-api
+    env: docker
+    plan: free
+    dockerfilePath: docker.io/manudevops94/percentage-calc-api-percentage-api:latest
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DB_HOST
+        fromService:
+          name: postgres-db
+          type: database
+          property: host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: challenge
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        fromService:
+          name: postgres-db
+          type: database
+          property: password
+
+  - type: database
+    name: postgres-db
+    plan: free
+    properties:
+      engine: postgres
+      version: 15
