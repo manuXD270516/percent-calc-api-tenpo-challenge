@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  percentage-api:
+    image: manudevops94/percentage-calc-api-percentage-api:latest
+    container_name: percentage-api-remote
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/challenge
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - postgres
+    networks:
+      - backend
