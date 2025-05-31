@@ -221,16 +221,11 @@ services:
           name: postgres-db
           type: database
           property: password
-
-  - type: database
-    name: postgres-db
-    plan: free
-    properties:
-      engine: postgres
-      version: 15
 ```
-
 ---
+
+Asegurate de contar con tu servidor de base de datos funcional.
+
 
 ### 🚀 Instrucciones para desplegar
 
@@ -248,9 +243,6 @@ services:
 
 - El parámetro `autoDeploy: false` evita que se reconstruya el servicio si haces cambios en el repositorio. Solo cambiará si actualizas la imagen en Docker Hub.
 - Si haces `docker push` con una nueva imagen y quieres que Render la use, puedes reiniciar el servicio manualmente desde el dashboard.
-
-
-
 
 
 ## 👨‍💻 Autor
